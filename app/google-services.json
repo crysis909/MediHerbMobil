@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "231958907458",
+    "firebase_url": "https://mediherbmobil.firebaseio.com",
+    "project_id": "mediherbmobil",
+    "storage_bucket": "mediherbmobil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231958907458:android:3393353be94a6433",
+        "android_client_info": {
+          "package_name": "eu.mediherb.mediherbmobil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "231958907458-strs7vm4e0qv3ulk1mfaqlmk1lj0p68i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAisuR0UEZzDVK2OHaMMBmSoGHDnejZukw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
