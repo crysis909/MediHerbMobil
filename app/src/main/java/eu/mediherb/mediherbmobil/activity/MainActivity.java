@@ -1,28 +1,24 @@
-package eu.mediherb.mediherbmobil;
+package eu.mediherb.mediherbmobil.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import eu.mediherb.mediherbmobil.adapter.ExpTextView;
+import eu.mediherb.mediherbmobil.MainRow;
+import eu.mediherb.mediherbmobil.R;
 import eu.mediherb.mediherbmobil.adapter.MainButtonAdapter;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ListView list;
-    private MainButtonAdapter _adpadter;
+    private MainButtonAdapter _adapter;
 
 
     @Override
@@ -30,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_main_2);
 
-        list = findViewById(R.id.main_list);
+        list = findViewById(R.id.mainList);
         ArrayList<MainRow>rows = new ArrayList<>();
         rows.add(new MainRow(R.drawable.button_border, R.string.text1, R.string.text2));
         rows.add(new MainRow(R.drawable.button_border, R.string.text1, R.string.text2));
@@ -38,8 +34,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         rows.add(new MainRow(R.drawable.button_border, R.string.text1, R.string.text2));
         rows.add(new MainRow(R.drawable.button_border, R.string.text1, R.string.text2));
 
-        _adpadter = new MainButtonAdapter(this, this, rows);
-        list.setAdapter(_adpadter);
+        _adapter = new MainButtonAdapter(this, this, rows);
+        list.setAdapter(_adapter);
         list.setOnItemClickListener(this);
     }
 
@@ -67,20 +63,29 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        MainRow m = (MainRow) _adpadter.getItem(position);
+        MainRow m = (MainRow) _adapter.getItem(position);
+        Intent intent = null;
+
         switch (position) {
+            case 0:
+                intent = new Intent(this, PhotoActivity.class);
+                //intent.putExtra("NAME PARAMETER", "wert");
+                break;
             case 1:
-                Intent intent = new Intent(this, Activity.class);
-                intent.putExtra("NAME PARAMETER", "wert");
+                intent = new Intent(this, PlantIdentActivity.class);
+
                 break;
             case 2:
+                intent = new Intent(this, ComplainSearchActivity.class);
                 break;
             case 3:
+                intent = new Intent(this, PlantListActivity.class);
                 break;
             case 4:
+                intent = new Intent(this, AboutActivity.class);
                 break;
-
-
         }
+        if (intent != null)
+            startActivity(intent);
     }
 }
