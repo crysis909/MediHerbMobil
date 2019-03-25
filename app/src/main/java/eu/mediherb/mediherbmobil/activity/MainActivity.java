@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ListView list;
     private MainButtonAdapter _adapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +27,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         list = findViewById(R.id.mainList);
         ArrayList<MainRow>rows = new ArrayList<>();
-        rows.add(new MainRow(R.drawable.button_border, R.string.text1, R.string.text2));
-        rows.add(new MainRow(R.drawable.button_border, R.string.text1, R.string.text2));
-        rows.add(new MainRow(R.drawable.button_border, R.string.text1, R.string.text2));
-        rows.add(new MainRow(R.drawable.button_border, R.string.text1, R.string.text2));
-        rows.add(new MainRow(R.drawable.button_border, R.string.text1, R.string.text2));
+        rows.add(new MainRow(R.drawable.ic_photo_camera, R.string.photoTextBig, R.string.photoTextSmall));
+        rows.add(new MainRow(R.drawable.ic_leaf, R.string.plantIdentTextBig, R.string.plantIdentTextSmall));
+        rows.add(new MainRow(R.drawable.ic_pill, R.string.compainSearchTextBig, R.string.compainSearchTextSmall));
+        rows.add(new MainRow(R.drawable.ic_search, R.string.plantsListBig, R.string.plantsListSmall));
 
         _adapter = new MainButtonAdapter(this, this, rows);
         list.setAdapter(_adapter);

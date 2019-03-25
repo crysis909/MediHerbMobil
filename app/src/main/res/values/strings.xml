@@ -91,18 +91,20 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
 
-    <string name="text1">TEXT1</string>
-    <string name="text2">Text2</string>
+    <string name="photoTextSmall">FOTOERKENNUNG</string>
+    <string name="photoTextBig">identifiere eine Pflanze via Foto</string>
 
-    <string-array name="menu_text1">
-        <item>Text1</item>
-        <item>Text2</item>
-    </string-array>
+    <string name="plantIdentTextSmall">PLANTIDENT</string>
+    <string name="plantIdentTextBig">via botanischer Merkmale</string>
 
-    <string-array name="menu_text2">
-        <item>klein1</item>
-        <item>klein2</item>
-    </string-array>
+    <string name="compainSearchTextSmall">SYMPTOMSUCHE</string>
+    <string name="compainSearchTextBig">finde ein Hilfsmittel</string>
+
+    <string name="plantsListSmall">PFLANZEN LISTE</string>
+    <string name="plantsListBig">Enzyklopädie</string>
+
+    <string name="textViewPlaceHolder">TextView</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="appName">MediHerb</string>
@@ -111,4 +113,5 @@
     <string name="title_activity_photo">PhotoActivity</string>
     <string name="title_activity_plant_ident">PlantIdentActivity</string>
     <string name="title_activity_plant_list">PlantListActivity</string>
+    <string name="missingLogo">MediHerbLogo</string>
 </resources>

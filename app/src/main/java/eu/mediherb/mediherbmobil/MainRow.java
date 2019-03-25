@@ -6,7 +6,7 @@ public class MainRow {
     private int textbig;
     private int textsmall;
 
-    public MainRow(int icon, int textbig, int textsmall) {
+    public MainRow(int icon, int textsmall, int textbig) {
         this.icon = icon;
         this.textbig = textbig;
         this.textsmall = textsmall;

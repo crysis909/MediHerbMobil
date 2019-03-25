@@ -38,7 +38,7 @@ public class MainButtonAdapter extends ArrayAdapter {
     @NonNull
     @Override
     public View getView(int position, View v,@NonNull ViewGroup parent) {
-        _rows.get(position);
+        MainRow item = _rows.get(position);
         Viewholder h;
         if(v == null){
             v = _act.getLayoutInflater().inflate(resource, null);
@@ -49,9 +49,9 @@ public class MainButtonAdapter extends ArrayAdapter {
             v.setTag(h);
         }else
             h = (Viewholder) v.getTag();
-        h.small.setText("Dummy 1");
-        h.big.setText("Dummy2");
-        h.img.setImageResource(R.drawable.ic_launcher_background);
+        h.small.setText(item.getTextsmall());
+        h.big.setText(item.getTextbig());
+        h.img.setImageResource(item.getIcon());
         return v;
     }
 }
