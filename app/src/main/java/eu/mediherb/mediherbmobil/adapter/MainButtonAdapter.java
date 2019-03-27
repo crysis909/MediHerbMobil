@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import eu.mediherb.mediherbmobil.MainRow;
+import eu.mediherb.mediherbmobil.classes.MainRow;
 import eu.mediherb.mediherbmobil.R;
 
 public class MainButtonAdapter extends ArrayAdapter {
@@ -20,14 +20,13 @@ public class MainButtonAdapter extends ArrayAdapter {
     private Context _con;
     private Activity _act;
     private ArrayList<MainRow> _rows;
-    private static final int resource = R.layout.cust_btn;
+    private static final int resource = R.layout.custom_row;
 
     public MainButtonAdapter(Context context, Activity _act, ArrayList<MainRow> rows) {
         super(context, resource, rows);
         this._con = context;
         this._act = _act;
         _rows = rows;
-        Log.e("NUKLEARFIRE", String.valueOf(this._rows.size()));
     }
     private class Viewholder{
         TextView small;
@@ -43,8 +42,8 @@ public class MainButtonAdapter extends ArrayAdapter {
         if(v == null){
             v = _act.getLayoutInflater().inflate(resource, null);
             h = new Viewholder();
-            h.small = v.findViewById(R.id.row_main_text2);
-            h.big = v.findViewById(R.id.row_main_text1);
+            h.small = v.findViewById(R.id.row_main_small);
+            h.big = v.findViewById(R.id.row_main_big);
             h.img = v.findViewById(R.id.row_main_img);
             v.setTag(h);
         }else

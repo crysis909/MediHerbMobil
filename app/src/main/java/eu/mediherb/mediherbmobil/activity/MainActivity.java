@@ -8,10 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
-import eu.mediherb.mediherbmobil.MainRow;
+import eu.mediherb.mediherbmobil.classes.MainRow;
 import eu.mediherb.mediherbmobil.R;
 import eu.mediherb.mediherbmobil.adapter.MainButtonAdapter;
 
@@ -23,13 +25,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_main_2);
+        setContentView(R.layout.activity_main);
 
         list = findViewById(R.id.mainList);
         ArrayList<MainRow>rows = new ArrayList<>();
         rows.add(new MainRow(R.drawable.ic_photo_camera, R.string.photoTextBig, R.string.photoTextSmall));
         rows.add(new MainRow(R.drawable.ic_leaf, R.string.plantIdentTextBig, R.string.plantIdentTextSmall));
-        rows.add(new MainRow(R.drawable.ic_pill, R.string.compainSearchTextBig, R.string.compainSearchTextSmall));
+        rows.add(new MainRow(R.drawable.ic_medidosis, R.string.compainSearchTextBig, R.string.compainSearchTextSmall));
         rows.add(new MainRow(R.drawable.ic_search, R.string.plantsListBig, R.string.plantsListSmall));
 
         _adapter = new MainButtonAdapter(this, this, rows);
@@ -40,8 +42,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -49,14 +51,34 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId())
+        {
+            case R.id.action_menu_home:
+                Toast.makeText(this, "Home gedrückt!", Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.action_menu_photo:
+                Toast.makeText(this, "Fotoerkennung gedrückt!", Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.action_menu_plantident:
+                Toast.makeText(this, "PlantIdent gedrückt!", Toast.LENGTH_LONG).show();
+                return true;
+            case  R.id.action_menu_complain:
+                Toast.makeText(this, "Beschwerde gedrückt!", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.action_menu_about:
+                Toast.makeText(this, "Über gedrückt!", Toast.LENGTH_LONG).show();
+                return true;
+
+            default:
+                    return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+
+
     }
 
     @Override

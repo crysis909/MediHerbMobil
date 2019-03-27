@@ -1,4 +1,4 @@
-package eu.mediherb.mediherbmobil;
+package eu.mediherb.mediherbmobil.classes;
 
 public class MainRow {
 
@@ -12,6 +12,7 @@ public class MainRow {
         this.textsmall = textsmall;
     }
 
+    //region Getter-Setter
     public int getIcon() {
         return icon;
     }
@@ -35,4 +36,5 @@ public class MainRow {
     public void setTextsmall(int textsmall) {
         this.textsmall = textsmall;
     }
+    //endregion
 }

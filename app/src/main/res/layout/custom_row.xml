@@ -19,7 +19,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/row_main_text1"
+        android:id="@+id/row_main_big"
         style="@style/style_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="@+id/row_main_img" />
 
     <TextView
-        android:id="@+id/row_main_text2"
+        android:id="@+id/row_main_small"
         style="@style/style_textsmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

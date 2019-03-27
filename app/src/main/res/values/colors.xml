@@ -6,5 +6,7 @@
 
 
     <color name="actionBarColor">#CDEBF5</color>
+    <color name="mediHerbPrimary">#992A0F</color>
+    <color name="mediHerbSecondary">#109648</color>
     <color name="black">#000000</color>
 </resources>
