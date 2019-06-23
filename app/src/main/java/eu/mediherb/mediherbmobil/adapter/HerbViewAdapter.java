@@ -1,7 +1,7 @@
 package eu.mediherb.mediherbmobil.adapter;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,71 +10,83 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import eu.mediherb.mediherbmobil.R;
+import eu.mediherb.mediherbmobil.transform.CircleTransform;
 import eu.mediherb.mediherbmobil.classes.gson.Herb;
 
 public class HerbViewAdapter extends RecyclerView.Adapter<HerbViewAdapter.HerbViewHolder> {
-    View.OnClickListener listener;
-    private final List<Herb> dataList;
+    private List<Herb> mTestItemList;
+    private View.OnClickListener mOnItemClickListener;
 
-    public void setClickListener(View.OnClickListener callback){
-        listener = callback;
+    public HerbViewAdapter(List<Herb> testItemList) {
+        this.mTestItemList = testItemList;
     }
 
-
-
-    public HerbViewAdapter(List<Herb> dataList){
-        this.dataList = dataList;
-    }
-
-    class HerbViewHolder extends RecyclerView.ViewHolder{
-        public  final View view;
-
-        TextView bigText;
-        TextView smallText;
-        ImageView img;
-
-        HerbViewHolder(View itemView){
-            super(itemView);
-            view = itemView;
-
-            bigText = view.findViewById(R.id.row_main_big);
-            smallText = view.findViewById(R.id.row_main_small);
-            img = view.findViewById(R.id.row_main_img);
-        }
-    }
-
-    @NonNull
+    @NotNull
     @Override
-    public HerbViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.custom_row, parent, false);
-        RecyclerView.ViewHolder holder = new HerbViewHolder(view);
-        holder.itemView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                listener.onClick(view);
+    public HerbViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_row, parent, false);
+
+        return new HerbViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NotNull HerbViewHolder holder, int position) {
+        try {
+            final String MAIN_URL = "https://mediherb.eu/";
+            Herb item = mTestItemList.get(position);
+
+            if (item != null) {
+                final String url = MAIN_URL + item.getBildLink();
+
+                holder.bigText.setText(item.getNameTrival());
+                holder.smallText.setText(item.getNameWissenschaft());
+                holder.percText.setText(String.format("%.2f", item.getPercentage() * 100));
+                Picasso.get()
+                        .load(url)
+                        .fit()
+                        .transform(new CircleTransform())
+                        .placeholder(R.drawable.ic_leaf)
+                        .error(R.mipmap.ic_launcher_round)
+                        .into(holder.img);
             }
-        });
 
-        return new HerbViewHolder(view);
-    }
+        } catch (Exception e) {
+            Log.e("Download", e.getMessage());
+        }
 
-    @Override
-    public void onBindViewHolder(@NonNull HerbViewHolder holder, int position) {
-        Herb item = dataList.get(position);
-
-        holder.bigText.setText(item.getNameTrival());
-        holder.smallText.setText(item.getNameWissenschaft());
-        //TODO Change Pseudo photo to the real one
-        holder.img.setImageResource(R.drawable.ic_launcher_background);
     }
 
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return mTestItemList.size();
+    }
+
+    public void setOnItemClickListener(View.OnClickListener itemClickListener) {
+        mOnItemClickListener = itemClickListener;
+    }
+
+    class HerbViewHolder extends RecyclerView.ViewHolder {
+        TextView bigText;
+        TextView smallText;
+        TextView percText;
+        ImageView img;
+
+        HerbViewHolder(View itemView) {
+            super(itemView);
+            bigText = itemView.findViewById(R.id.row_main_big);
+            smallText = itemView.findViewById(R.id.row_main_small);
+            percText = itemView.findViewById(R.id.row_main_perc);
+            img = itemView.findViewById(R.id.row_main_img);
+
+            itemView.setTag(this);
+            itemView.setOnClickListener(mOnItemClickListener);
+        }
     }
 }
+
 

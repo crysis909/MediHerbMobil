@@ -2,8 +2,7 @@ package eu.mediherb.mediherbmobil.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.util.Log;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import eu.mediherb.mediherbmobil.classes.MainRow;
+import eu.mediherb.mediherbmobil.classes.custom.MainRow;
 import eu.mediherb.mediherbmobil.R;
 
 public class MainButtonAdapter extends ArrayAdapter {
@@ -48,8 +47,8 @@ public class MainButtonAdapter extends ArrayAdapter {
             v.setTag(h);
         }else
             h = (Viewholder) v.getTag();
-        h.small.setText(item.getTextsmall());
-        h.big.setText(item.getTextbig());
+        h.small.setText(item.getTextSmall());
+        h.big.setText(item.getTextBig());
         h.img.setImageResource(item.getIcon());
         return v;
     }

@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static Retrofit retrofit;
-    private static final String BASE_URL = "http://mediherb.eu:3000/api/";
+    private static final String BASE_URL = "https://mediherb.eu:/api/";
 
     public static Retrofit getRetrofit() {
         if (retrofit == null) {
